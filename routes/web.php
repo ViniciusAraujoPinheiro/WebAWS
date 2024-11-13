@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\webhookTestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,6 +15,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/products', [productsController::class, 'index'])->middleware(['auth', 'verified'])->name('products.index');
 
+Route::post('/webhook', [webhookTestController::class, 'webhook'])->name('webhook');
 
 // Rota para exibir o formulário de cadastro
 Route::get('/products/create', [productsController::class, 'create'])
